@@ -2,10 +2,10 @@ from random import randint
 n = int(input("Введите количество строк в матрице: "))
 m = int(input("Введите количество столбцов в матрице: "))
 z = int(input("Введите кол-во матриц: "))
-T = [[[randint(-10,10) for i in range(z)] for j in range(n)]for k in range(m)]
-for i in range(n):
-    for j in range(m):
-        for k in range(z):
+T = [[[randint(-10,10) for i in range(z)] for j in range(m)]for k in range(n)]
+for k in range(z):
+    for i in range(n):
+        for j in range(m):
             print(f'{T[i][j][k]}', end=' ')
         print(f'\n')
     print(f'\n')
@@ -16,5 +16,5 @@ for i in range(n):
         for k in range(z):
             if T[i][j][k] > maximum:
                 maximum = T[i][j][k]
-                indexes = [i,j,k]
+                indexes = [i + 1,j + 1,k + 1]
 print(f'Максимальный элемент равен: {maximum}, Индексы равны: {indexes}')
