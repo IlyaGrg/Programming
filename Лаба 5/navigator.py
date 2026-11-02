@@ -1,3 +1,4 @@
+import csv
 inf = float('inf')
 start = 0
 
@@ -29,3 +30,23 @@ def getPath(f, G):
                 f = v
     return path[::-1]
 
+
+with open("graph_matrix.csv", encoding="utf-8") as f:
+    rows = csv.reader(f, delimiter=";")
+    graph = []
+    for row in rows:
+        new_row = []
+        for x in row:
+            if x == 'inf':
+                new_row.append(inf)
+            else:
+                new_row.append(int(x))
+        graph.append(new_row)
+
+
+start = int(input("Введите начальную точку: ")) - 1
+end = int(input("Введите пункт назначения: ")) - 1
+d = djkstra(graph, start)
+print(d)
+getPath(end, graph)
+print(getPath(end, graph))
